@@ -40,14 +40,6 @@ export default class LoadingScene extends Phaser.Scene {
       this.load.audio(name, [requireImage(path)])
     })
 
-    // Load enums.
-    const requireEnum = require.context('@src/enums', true, /.json$/)
-    this.game.enum = {}
-    requireEnum.keys().forEach((path) => {
-      const name = extractName(path)
-      this.game.enum[name] = requireEnum(path)
-    })
-
     // Load data.
     const requireData = require.context('@src/data', true, /.js$/)
     this.game.data = {}
