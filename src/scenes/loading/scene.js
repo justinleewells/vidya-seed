@@ -68,6 +68,9 @@ export default class LoadingScene extends Phaser.Scene {
     requireGameObject.keys().forEach((path) => {
       const { factoryFn } = requireGameObject(path)
       const name = extractName(path)
+        .split('-')
+        .map((w, i) => (i > 0 ? w.replace(/^\w/, (c) => c.toUpperCase()) : w))
+        .join('')
       Phaser.GameObjects.GameObjectFactory.register(name, factoryFn)
     })
   }
