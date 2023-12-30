@@ -24,6 +24,7 @@ module.exports = {
       '@enums': path.resolve(__dirname, 'src/enums/'),
       '@game-objects': path.resolve(__dirname, 'src/game-objects'),
       '@src': path.resolve(__dirname, 'src'),
+      '@utils': path.resolve(__dirname, 'utils'),
     },
   },
   optimization: {

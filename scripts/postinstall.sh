@@ -5,3 +5,4 @@ mkdir -p ./src/assets/audio
 mkdir -p ./src/enums
 mkdir -p ./src/data
 mkdir -p ./src/game-objects
+mkdir -p ./src/utils
