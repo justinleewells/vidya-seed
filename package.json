@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "A seed project for games using the Vidya framework.",
   "main": "webpack.config.js",
-  "type": "module",
   "scripts": {
     "dev": "webpack serve --config=webpack.dev.js",
     "build": "webpack --config=webpack.prod.js",
