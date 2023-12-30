@@ -41,7 +41,7 @@ export default class LoadingScene extends Phaser.Scene {
     })
 
     // Load data.
-    const requireData = require.context('@src/data', true, /.js$/)
+    const requireData = require.context('@src/data', true, /.mjs$/)
     this.game.data = {}
     requireData.keys().forEach((path) => {
       const data = requireData(path)
@@ -50,9 +50,6 @@ export default class LoadingScene extends Phaser.Scene {
       const { id } = data.info
       if (!this.game.data[type]) this.game.data[type] = {}
       this.game.data[type][id] = data
-      // Add this data entry to its enum.
-      if (!this.game.enum[type]) this.game.enum[type] = {}
-      this.game.enum[type][name] = id
     })
 
     // Load game objects and register their factories.
