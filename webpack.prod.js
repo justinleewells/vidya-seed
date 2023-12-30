@@ -1,5 +1,5 @@
-const shared = require('./webpack.shared.js')
+import shared from './webpack.shared.js'
 
-module.exports = Object.assign(shared, {
+export default Object.assign(shared, {
   mode: 'production',
 })

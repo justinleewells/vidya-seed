@@ -1,11 +1,14 @@
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+import path from 'path'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import { fileURLToPath } from 'url'
 
-module.exports = {
+const DIRNAME = path.dirname(fileURLToPath(import.meta.url))
+
+export default {
   entry: './src/index.js',
   output: {
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(DIRNAME, 'dist'),
   },
   module: {
     rules: [
@@ -21,10 +24,10 @@ module.exports = {
   },
   resolve: {
     alias: {
-      '@enums': path.resolve(__dirname, 'src/enums/'),
-      '@game-objects': path.resolve(__dirname, 'src/game-objects'),
-      '@src': path.resolve(__dirname, 'src'),
-      '@utils': path.resolve(__dirname, 'utils'),
+      '@enums': path.resolve(DIRNAME, 'src/enums/'),
+      '@game-objects': path.resolve(DIRNAME, 'src/game-objects'),
+      '@src': path.resolve(DIRNAME, 'src'),
+      '@utils': path.resolve(DIRNAME, 'utils'),
     },
   },
   optimization: {

@@ -1,11 +1,14 @@
-const path = require('path')
-const shared = require('./webpack.shared.js')
+import path from 'path'
+import shared from './webpack.shared.js'
+import { fileURLToPath } from 'url'
 
-module.exports = Object.assign(shared, {
+const DIRNAME = path.dirname(fileURLToPath(import.meta.url))
+
+export default Object.assign(shared, {
   mode: 'development',
   devServer: {
     static: {
-      directory: path.join(__dirname, 'dist'),
+      directory: path.join(DIRNAME, 'dist'),
     },
     compress: true,
     port: 9000,
