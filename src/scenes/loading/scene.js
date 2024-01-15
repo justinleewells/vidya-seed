@@ -47,7 +47,7 @@ export default class LoadingScene extends Phaser.Scene {
       const data = requireData(path)
       const name = extractName(path).replace('-', '_').toUpperCase()
       const type = extractType(path)
-      const { id } = data.info
+      const { id } = data
       if (!GameData[type]) GameData[type] = {}
       GameData[type][id] = data
     })
