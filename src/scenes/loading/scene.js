@@ -44,7 +44,7 @@ export default class LoadingScene extends Phaser.Scene {
     // Load data.
     const requireData = require.context('@src/data', true, /.mjs$/)
     requireData.keys().forEach((path) => {
-      const data = requireData(path)
+      const data = requireData(path).default
       const name = extractName(path).replace('-', '_').toUpperCase()
       const type = extractType(path)
       const { id } = data
