@@ -34,6 +34,25 @@ export default class LoadingScene extends Phaser.Scene {
       this.load.image(`${type}/${name}`, requireImage(path))
     })
 
+    // Spritesheets
+    // First, load the configs.
+    const requireSpritesheet = require.context('@src/assets/spritesheets')
+    let spritesheetConfigs = {}
+    requireSpritesheet.keys().forEach((path) => {
+      if (path.indexOf('config') <= 0) return
+      const type = extractType(path)
+      spritesheetConfigs[type] = requireSpritesheet(path)
+    })
+    // Next, load the image files.
+    requireSpritesheet.keys().forEach((path) => {
+      if (path.indexOf('config') >= 0) return
+      const type = extractType(path)
+      const config = spritesheetConfigs[type]
+      if (!config) return
+      const name = extractName(path)
+      this.load.spritesheet(`${type}/${name}`, requireSpritesheet(path), config)
+    })
+
     // Load audio.
     const requireAudio = require.context('@src/assets/audio')
     requireAudio.keys().forEach((path) => {
