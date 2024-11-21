@@ -1,5 +1,4 @@
 import Phaser from 'phaser'
-import GameData from '@shared/game-data.js'
 
 const extractName = (path) => {
   const spl = path.split('/')
@@ -58,17 +57,6 @@ export default class LoadingScene extends Phaser.Scene {
     requireAudio.keys().forEach((path) => {
       const name = extractName(path)
       this.load.audio(name, [requireImage(path)])
-    })
-
-    // Load data.
-    const requireData = require.context('@src/data', true, /.mjs$/)
-    requireData.keys().forEach((path) => {
-      const data = requireData(path).default
-      const name = extractName(path).replace('-', '_').toUpperCase()
-      const type = extractType(path)
-      const { id } = data
-      if (!GameData[type]) GameData[type] = {}
-      GameData[type][id] = data
     })
 
     // Load game objects and register their factories.

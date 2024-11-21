@@ -1,0 +1,8 @@
+export default Object.freeze({
+  KEYBOARD: 0,
+  GAMEPAD_CUSTOM: 1,
+  GAMEPAD_STEAM: 2,
+  GAMEPAD_SWITCH: 3,
+  GAMEPAD_PLAYSTATION: 4,
+  GAMEPAD_XBOX: 5,
+})

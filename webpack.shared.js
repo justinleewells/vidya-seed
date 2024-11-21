@@ -3,14 +3,17 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const alias = {
+  '@assets': path.resolve(__dirname, 'src/assets'),
+  '@components': path.resolve(__dirname, 'src/components'),
   '@enums': path.resolve(__dirname, 'src/enums/'),
   '@game-objects': path.resolve(__dirname, 'src/game-objects'),
-  '@shared': path.resolve(__dirname, 'src/shared'),
-  '@src': path.resolve(__dirname, 'src'),
-  '@utils': path.resolve(__dirname, 'utils'),
+  '@utils': path.resolve(__dirname, 'src/utils'),
 }
 fs.readdirSync('./src/types').forEach((type) => {
-  alias[`@${type}`] = path.resolve(__dirname, `src/types/${type}`)
+  const { plural } = JSON.parse(
+    fs.readSync('./src/types/metadata.json').toString()
+  )
+  alias[`@${plural}`] = path.resolve(__dirname, `src/types/${type}`)
 })
 
 module.exports = {
