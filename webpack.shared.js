@@ -12,10 +12,7 @@ const alias = {
   '@utils': path.resolve(__dirname, 'src/utils'),
 }
 fs.readdirSync('./src/types').forEach((type) => {
-  const { plural } = JSON.parse(
-    fs.readFileSync(`./src/types/${type}/metadata.json`).toString()
-  )
-  alias[`@${plural}`] = path.resolve(__dirname, `src/types/${type}`)
+  alias[`@${type}`] = path.resolve(__dirname, `src/types/${type}`)
 })
 
 module.exports = {
