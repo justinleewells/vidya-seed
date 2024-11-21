@@ -16,6 +16,18 @@ for (let i = 1; i < scenes.length; i++) {
   }
 }
 
+// Require and configure plugins.
+const requirePlugin = require.context('./plugins/', true, /\/plugin\.js$/)
+const plugins = { global: [], scene: [] }
+requirePlugin.keys().forEach((key) => {
+  const { plugin, config } = requirePlugin(key)
+  plugins[config.type].push({
+    plugin,
+    key: config.key,
+    mapping: config.mapping,
+  })
+})
+
 // Start the game.
 new Phaser.Game({
   type: Phaser.AUTO,
@@ -23,4 +35,5 @@ new Phaser.Game({
   width: 800,
   height: 600,
   scene: scenes,
+  plugins,
 })
