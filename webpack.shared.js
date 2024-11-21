@@ -6,6 +6,7 @@ const alias = {
   '@components': path.resolve(__dirname, 'src/components'),
   '@enums': path.resolve(__dirname, 'src/enums/'),
   '@game-objects': path.resolve(__dirname, 'src/game-objects'),
+  '@globals': path.resolve(__dirname, 'src/globals'),
   '@utils': path.resolve(__dirname, 'src/utils'),
 }
 fs.readdirSync('./src/types').forEach((type) => {
