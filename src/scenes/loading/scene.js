@@ -16,7 +16,7 @@ export default class LoadingScene extends Scene {
   }
   preload() {
     // Load fonts.
-    const requireFont = require.context('@src/assets/fonts')
+    const requireFont = require.context('@assets/fonts')
     requireFont.keys().forEach((path) => {
       if (path.indexOf('.png') <= 0) return
       const name = extractName(path)
@@ -26,7 +26,7 @@ export default class LoadingScene extends Scene {
     })
 
     // Load images.
-    const requireImage = require.context('@src/assets/images')
+    const requireImage = require.context('@assets/images')
     requireImage.keys().forEach((path) => {
       const name = extractName(path)
       const type = extractType(path)
@@ -35,7 +35,7 @@ export default class LoadingScene extends Scene {
 
     // Spritesheets
     // First, load the configs.
-    const requireSpritesheet = require.context('@src/assets/spritesheets')
+    const requireSpritesheet = require.context('@assets/spritesheets')
     let spritesheetConfigs = {}
     requireSpritesheet.keys().forEach((path) => {
       if (path.indexOf('config') <= 0) return
@@ -53,14 +53,14 @@ export default class LoadingScene extends Scene {
     })
 
     // Load audio.
-    const requireAudio = require.context('@src/assets/audio')
+    const requireAudio = require.context('@assets/audio')
     requireAudio.keys().forEach((path) => {
       const name = extractName(path)
       this.load.audio(name, [requireImage(path)])
     })
 
     // Load game objects and register their factories.
-    const requireGameObject = require.context('@src/game-objects')
+    const requireGameObject = require.context('@game-objects')
     requireGameObject.keys().forEach((path) => {
       const { factoryFn } = requireGameObject(path)
       const name = extractName(path)

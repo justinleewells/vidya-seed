@@ -3,6 +3,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const alias = {
+  '@assets': path.resolve(__dirname, 'src/assets'),
   '@components': path.resolve(__dirname, 'src/components'),
   '@enums': path.resolve(__dirname, 'src/enums/'),
   '@game-objects': path.resolve(__dirname, 'src/game-objects'),
@@ -11,7 +12,7 @@ const alias = {
 }
 fs.readdirSync('./src/types').forEach((type) => {
   const { plural } = JSON.parse(
-    fs.readSync('./src/types/metadata.json').toString()
+    fs.readFileSync(`./src/types/${type}/metadata.json`).toString()
   )
   alias[`@${plural}`] = path.resolve(__dirname, `src/types/${type}`)
 })
