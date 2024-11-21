@@ -3,7 +3,6 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const alias = {
-  '@assets': path.resolve(__dirname, 'src/assets'),
   '@components': path.resolve(__dirname, 'src/components'),
   '@enums': path.resolve(__dirname, 'src/enums/'),
   '@game-objects': path.resolve(__dirname, 'src/game-objects'),
