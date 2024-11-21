@@ -1,4 +1,4 @@
-import Phaser from 'phaser'
+import { Scene } from 'phaser'
 
 const extractName = (path) => {
   const spl = path.split('/')
@@ -10,7 +10,7 @@ const extractType = (path) => {
   return spl[spl.length - 2]
 }
 
-export default class LoadingScene extends Phaser.Scene {
+export default class LoadingScene extends Scene {
   constructor() {
     super('LoadingScene')
   }
