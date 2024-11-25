@@ -14,6 +14,10 @@ const alias = {
 fs.readdirSync('./src/types').forEach((type) => {
   alias[`@${type}`] = path.resolve(__dirname, `src/types/${type}`)
 })
+fs.readdirSync('./src/singletons').forEach((filename) => {
+  const singleton = filename.split('.')[0]
+  alias[`@${singleton}`] = path.resolve(__dirname, `src/singletons/${filename}`)
+})
 
 module.exports = {
   entry: './src/index.js',
