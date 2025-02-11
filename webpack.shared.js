@@ -4,11 +4,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const alias = {
   '@assets': path.resolve(__dirname, 'src/assets'),
-  '@components': path.resolve(__dirname, 'src/components'),
   '@enums': path.resolve(__dirname, 'src/enums/'),
   '@game-objects': path.resolve(__dirname, 'src/game-objects'),
   '@globals': path.resolve(__dirname, 'src/globals'),
   '@plugins': path.resolve(__dirname, 'src/plugins'),
+  '@shared': path.resolve(__dirname, 'src/shared'),
   '@utils': path.resolve(__dirname, 'src/utils'),
 }
 fs.readdirSync('./src/types').forEach((type) => {
