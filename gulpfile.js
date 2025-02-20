@@ -13,7 +13,6 @@ gulp.task('watch', () => {
     path: path.join(__dirname, dir),
   }))
   tasks.forEach((task) => {
-    console.log(task)
     gulp.watch([task.path], () => {
       return gulp.src(path.join(task.path, task.tps)).pipe(tps())
     })
