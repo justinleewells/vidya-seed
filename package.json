@@ -3,17 +3,19 @@
   "version": "1.0.0",
   "description": "A seed project for games using the Vidya framework.",
   "scripts": {
-    "dev": "webpack serve --config=webpack.dev.js",
+    "dev": "concurrently \"webpack serve --config=webpack.dev.js\" \"gulp watch\"",
     "build": "webpack --config=webpack.prod.js",
     "postinstall": "scripts/postinstall.sh"
   },
   "author": "Justin Wells <justinleewells@icloud.com>",
   "license": "MIT",
   "devDependencies": {
+    "concurrently": "^9.1.2",
     "css-loader": "^6.8.1",
     "gulp": "^5.0.0",
     "gulp-texturepacker": "^1.0.2",
     "html-webpack-plugin": "^5.6.0",
+    "nw": "^0.96.0-sdk",
     "prettier": "^3.1.1",
     "style-loader": "^3.3.3",
     "webpack": "^5.89.0",
