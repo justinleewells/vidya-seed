@@ -5,12 +5,12 @@
   "scripts": {
     "dev": "concurrently \"webpack serve --config=webpack.dev.js\" \"gulp watch\"",
     "build": "webpack --config=webpack.prod.js",
+    "nw": "npm run build && nw",
     "postinstall": "scripts/postinstall.sh"
   },
   "author": "Justin Wells <justinleewells@icloud.com>",
   "license": "MIT",
   "devDependencies": {
-    "concurrently": "^9.1.2",
     "css-loader": "^6.8.1",
     "gulp": "^5.0.0",
     "gulp-texturepacker": "^1.0.2",
@@ -25,5 +25,10 @@
   "dependencies": {
     "phaser": "^3.70.0",
     "stratagem": "^0.2.2"
+  },
+  "window": {
+    "title": "New Vidya Project",
+    "width": 800,
+    "height": 600
   }
 }
