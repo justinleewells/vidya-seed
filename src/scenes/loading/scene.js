@@ -15,6 +15,11 @@ export default class LoadingScene extends Scene {
     super('LoadingScene')
   }
   preload() {
+    const locale = this.localize.isAvailable(navigator.language)
+      ? navigator.language
+      : 'en-US'
+    this.localize.load(locale)
+
     // Load fonts.
     const requireFont = require.context('@assets/fonts')
     requireFont.keys().forEach((path) => {

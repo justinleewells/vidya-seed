@@ -1,5 +1,6 @@
 #!/bin/bash
 mkdir -p ./graphics
+mkdir -p ./locales
 mkdir -p ./src/assets/audio
 mkdir -p ./src/assets/fonts
 mkdir -p ./src/assets/images
