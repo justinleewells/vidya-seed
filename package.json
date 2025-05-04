@@ -2,6 +2,7 @@
   "name": "vidya-seed",
   "version": "1.0.0",
   "description": "A seed project for games using the Vidya framework.",
+  "main": "dist/index.html",
   "scripts": {
     "dev": "concurrently \"webpack serve --config=webpack.dev.js\" \"gulp watch\"",
     "build": "webpack --config=webpack.prod.js",
