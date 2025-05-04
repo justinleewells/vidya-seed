@@ -10,10 +10,10 @@ gulp.task('watch', () => {
   const dirs = fs.readdirSync(path.join(__dirname, 'graphics'))
   const tasks = dirs.map((dir) => ({
     tps: `${dir}.tps`,
-    path: path.join(__dirname, dir),
+    path: path.join(__dirname, 'graphics', dir),
   }))
   tasks.forEach((task) => {
-    gulp.watch([task.path], () => {
+    gulp.watch([path.join(task.path, '*.png')], () => {
       return gulp.src(path.join(task.path, task.tps)).pipe(tps())
     })
   })
