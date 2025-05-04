@@ -36,4 +36,9 @@ new Phaser.Game({
   height: 600,
   scene: scenes,
   plugins,
+  scale: {
+    parent: 'game',
+    zoom: 1,
+    autoCenter: Phaser.Scale.CENTER_BOTH,
+  },
 })

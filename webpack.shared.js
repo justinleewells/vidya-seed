@@ -48,6 +48,7 @@ module.exports = {
       title: 'New Vidya Project',
       hash: true,
       clean: true,
+      template: 'src/index.html',
     }),
   ],
 }
