@@ -10,6 +10,10 @@ class ResolutionPlugin extends Plugins.BasePlugin {
       scale: 1,
       fullScreen: false,
     }
+    this.timeout = null
+    this.game.scale.on('enterfullscreen', this.enterFullScreen, this)
+    this.game.scale.on('leavefullscreen', this.leaveFullScreen, this)
+    this.game.scale.on('resize', this.resize, this)
   }
   get width() {
     return this.config.width
@@ -30,7 +34,6 @@ class ResolutionPlugin extends Plugins.BasePlugin {
     return this.config.fullScreen
   }
   _update() {
-    this.config.scale = Math.min(this.maxScale, this.scale)
     this.game.scale
       .setGameSize(
         this.fullScreen
@@ -40,7 +43,8 @@ class ResolutionPlugin extends Plugins.BasePlugin {
           ? Math.floor(window.innerHeight / this.scale)
           : this.height
       )
-      .setZoom(this.scale)
+      .setZoom(Math.min(this.maxScale, this.scale))
+    this.game.events.emit('updateresolution')
     return this
   }
   setDimensions(width, height) {
@@ -51,9 +55,26 @@ class ResolutionPlugin extends Plugins.BasePlugin {
     this.config.scale = scale
     return this._update()
   }
-  setFullScreen(fullScreen) {
-    this.config.fullScreen = fullScreen
+  setFullScreen() {
+    this.game.scale.startFullscreen()
     return this._update()
+  }
+  // Lifecycle
+  resize() {
+    if (!this.timeout) {
+      this.timeout = setTimeout(() => {
+        this._update()
+        this.timeout = null
+      }, 100)
+    }
+  }
+  enterFullScreen() {
+    this.config.fullScreen = true
+    this._update()
+  }
+  leaveFullScreen() {
+    this.config.fullScreen = false
+    this._update()
   }
 }
 
