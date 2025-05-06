@@ -35,13 +35,16 @@ class Tooltip extends Phaser.GameObjects.Container {
     this.background.setSize(this.text.width + 16, this.text.height + 16)
     this.setVisible(true)
   }
-  preUpdate() {}
+  destroy() {
+    super.destroy()
+    this.background = undefined
+    this.text = undefined
+  }
 }
 
 function createTooltip() {
   const tooltip = new Tooltip(this.scene)
   this.displayList.add(tooltip)
-  this.updateList.add(tooltip)
   return tooltip
 }
 

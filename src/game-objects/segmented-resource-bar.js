@@ -11,7 +11,7 @@ const createSegment = (bar, width, color) => {
 }
 
 class SegmentedResourceBar extends Phaser.GameObjects.Container {
-  constructor(scene, { x, y, width, height, color, displayType, gutterWidth }) {
+  constructor(scene, { x, y, width, height, color, gutterWidth }) {
     super(scene, x, y)
     this.color = color
     this.gutterWidth = gutterWidth
@@ -19,27 +19,7 @@ class SegmentedResourceBar extends Phaser.GameObjects.Container {
     this.background = scene.add
       .rectangle(0, 0, width, height, color[900])
       .setOrigin(0, 0)
-    if (displayType == 'hover') {
-      this.background
-        .setInteractive()
-        .on('pointerover', () => {
-          this.value.setVisible(true)
-        })
-        .on('pointerout', () => {
-          this.value.setVisible(false)
-        })
-    }
     this.add(this.background)
-
-    this.value = scene.add
-      .text(width / 2, height / 2, '0/0', {
-        fontSize: height - 4,
-        fontFamily: 'Arial',
-        color: '#212121',
-      })
-      .setOrigin(0.5, 0.5)
-      .setVisible(displayType == 'static')
-    this.add(this.value)
 
     this.segments = []
   }
@@ -66,16 +46,18 @@ class SegmentedResourceBar extends Phaser.GameObjects.Container {
       this.add(segment)
       this.segments.push(segment)
     }
-    this.value.text = `${current + extra}/${max}`
-    this.bringToTop(this.value)
   }
-  preUpdate() {}
+  destroy() {
+    super.destroy()
+    this.color = undefined
+    this.background = undefined
+    this.segments = undefined
+  }
 }
 
 function createSegmentedResourceBar(args = {}) {
   const segmentedResourceBar = new SegmentedResourceBar(this.scene, args)
   this.displayList.add(segmentedResourceBar)
-  this.updateList.add(segmentedResourceBar)
   return segmentedResourceBar
 }
 

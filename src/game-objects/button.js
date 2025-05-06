@@ -47,16 +47,20 @@ class Button extends Phaser.GameObjects.Container {
       })
   }
   disable() {
-    this.background.setFillStyle(Grey[500])
-    this.background.removeInteractive(false)
+    this.background.setFillStyle(Grey[500]).removeInteractive(false)
   }
-  preUpdate() {}
+  destroy() {
+    super.destroy()
+    this.color = undefined
+    this.callback = undefined
+    this.background = undefined
+    this.text = undefined
+  }
 }
 
 function createButton(args) {
   const button = new Button(this.scene, args)
   this.displayList.add(button)
-  this.updateList.add(button)
   return button
 }
 
