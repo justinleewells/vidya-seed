@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const alias = {
   '@assets': path.resolve(__dirname, 'src/assets'),
   '@enums': path.resolve(__dirname, 'src/enums/'),
+  '@errors': path.resolve(__dirname, 'src/errors'),
   '@game-objects': path.resolve(__dirname, 'src/game-objects'),
   '@globals': path.resolve(__dirname, 'src/globals'),
   '@plugins': path.resolve(__dirname, 'src/plugins'),
