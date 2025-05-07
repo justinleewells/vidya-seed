@@ -17,7 +17,7 @@ for (let i = 1; i < scenes.length; i++) {
 }
 
 // Require and configure plugins.
-const requirePlugin = require.context('./plugins/', true, /\/plugin\.js$/)
+const requirePlugin = require.context('./plugins/', true, /\/index\.js$/)
 const plugins = { global: [], scene: [] }
 requirePlugin.keys().forEach((key) => {
   const { plugin, config } = requirePlugin(key)
