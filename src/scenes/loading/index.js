@@ -76,6 +76,6 @@ export default class LoadingScene extends Scene {
     })
   }
   create() {
-    // this.scene.start('')
+    this.scene.start('DevScene')
   }
 }

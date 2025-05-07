@@ -1,7 +1,7 @@
 import './style.css'
 
 // Require all the scenes.
-const requireScene = require.context('./scenes/', true, /\/scene\.js$/)
+const requireScene = require.context('./scenes/', true, /\/index\.js$/)
 let scenes = []
 requireScene
   .keys()
